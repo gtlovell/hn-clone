@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, Memo, useState } from 'react';
 import { getStory } from '../services/hnApi';
 import { mapTime } from '../mappers/mapTime';
 import {
