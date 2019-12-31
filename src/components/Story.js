@@ -1,4 +1,4 @@
-import React, { useEffect, Memo, useState } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import { getStory } from '../services/hnApi';
 import { mapTime } from '../mappers/mapTime';
 import {
@@ -8,7 +8,7 @@ import {
   StoryMetaElement
 } from '../styles/StoryStyles';
 
-export const Story = ({ storyId }) => {
+export const Story = memo(function Story({ storyId }) {
   const [story, setStory] = useState({});
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const Story = ({ storyId }) => {
   }, []);
 
   return story && story.url ? (
-    <StoryWrapper>
+    <StoryWrapper data-testid="story">
       <StoryTitle>
         <a href={story.url}>{story.title}</a>
       </StoryTitle>
@@ -31,4 +31,4 @@ export const Story = ({ storyId }) => {
       </StoryMeta>
     </StoryWrapper>
   ) : null;
-};
+});
